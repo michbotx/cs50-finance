@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+
+{% block main %}
+
+<div class="container-sm">
+    <h1 class="mb-5"> Update Contact Profile </h1>
+    <table class="table table-striped table-hover mt-3">
+        <thead class="table-dark">
+            <tr>
+                <th>Category</th>
+                <th>Detail</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Username</td>
+                <td> {{ users[0].username }} </td>
+                <td><span class="btn btn-primary">Edit</span></td>
+            </tr>
+            <tr>
+                <td>Current cash balance</td>
+                <td>US {{ users[0].cash | usd }}</td>
+                <td><span class="btn btn-primary">Add</span></td>
+            </tr>
+            <tr>
+                <td>Password</td>
+                <td>
+                    <form action="/profile" method="post">
+                        <input type="password" autofocus class="form-control" name="password" placeholder="New Password">
+                    </form>
+                </td>
+                <td> <button class="btn btn-primary" type="submit">Change</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}

@@ -1,0 +1,81 @@
+{% extends "layout.html" %}
+
+{% block main %}
+
+{% if message %}
+<div class="alert alert-success">
+    {{ message }}
+</div>
+{% endif %}
+
+<div class="container-sm">
+    <h1> Welcome back, {{ users[0].username }}! </h1>
+
+    <div>
+        <form action="/" method="post">
+            <div class="input-group my-3">
+                <span class="input-group-text material-symbols-outlined" id="basic-addon1"> search </span>
+                <input type="text" id="symbol" class="form-control" name="symbol" placeholder="Search symbol" aria-label="symbol" aria-describedby="basic-addon1" required>
+                <button class="btn btn-primary" type="submit">Submit</button>
+              </div>
+        </form>
+
+        {% if symbol %}
+            {{ symbol.name }} {{ symbol.price | usd }}
+        {% endif %}
+
+    </div>
+
+
+    <table class="table table-striped table-hover mt-3">
+        <thead class="table-dark">
+            <tr>
+                <th scope="col">
+                    Symbol
+                </th>
+                <th scope="col">
+                    Name
+                </th>
+                <th  scope="col">
+                    Shares
+                </th>
+                <th  scope="col">
+                    Price
+                </th>
+                <th  scope="col">
+                    Total
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in portfolio %}
+                <tr>
+                    <td> {{ row.symbol }} </td>
+                    <td> {{ row.symbol }} </td>
+                    <td> {{ row.qty }} </td>
+                    <td> {{ row.stock_price | usd  }}</td>
+                    <td> {{ row.total_buy | usd }}</td>
+                </tr>
+                {% endfor %}
+            <tr>
+                <td colspan="4" >
+                    <p style="text-align: right;">Cash</p>
+                </td>
+                <td>
+                    {{ users[0].cash | usd }}
+                </td>
+            </tr>
+            <tr>
+                <td colspan="4">
+                    <p style="text-align: right;">Total</p>
+                </td>
+                <td>
+                    {{ total | usd }}
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Log In
+{% endblock %}
+
+{% block main %}
+<div class="front__page__container">
+    <div class="front__page">
+        <div class="column1">
+            <form action="/login" method="post" class="d-grid col-lg-10 col-6 gap-2 mx-auto">
+                <h3>Sign in to C$50Finance</h3>
+                <div class="mb-3">
+                    <input autocomplete="off" autofocus class="form-control " id="username" name="username" placeholder="Username" type="text">
+                </div>
+                <div class="mb-3">
+                    <input class="form-control" id="password" name="password" placeholder="Password" type="password">
+                </div>
+                <button class="btn btn-primary" type="submit">Log In</button>
+                <a href="/register" class="btn btn-outline-primary">Create an account</a>
+            </form>
+
+        </div>
+        <div class="column2">
+            <img class="front__page__img" src="static/savings-login.svg" alt="saving-bg">
+        </div>
+    </div>
+<div>
+
+{% endblock %}
